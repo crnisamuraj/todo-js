@@ -1,0 +1,32 @@
+GET http://localhost:5050/api/users
+
+###
+
+GET http://localhost:5050/api/users/5dffd8276a9c1303cc1e7b5e
+
+###
+
+POST http://localhost:5050/api/users
+Content-Type: application/json
+
+{
+	"name": "Alpha Destroyer",
+	"channels": "WoW"
+}
+
+###
+
+DELETE  http://localhost:5050/api/users/5dffd8276a9c1303cc1e7b5e
+
+###
+
+GET http://localhost:5050/api/posts
+
+###
+
+POST http://localhost:5050/api/posts
+Content-Type: application/json
+
+{
+	"title": "Alpha Destroyer"
+}
