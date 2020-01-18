@@ -1,12 +1,16 @@
+const http = require('http');
+
 require('dotenv').config();
 const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 5050;
+const port = 8080;
 
 //MongoDB
 const mongoose = require('mongoose');
-mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+const dbUrl = `mongodb://${process.env.MONGODB_ADMINUSERNAME}:${process.env.MONGODB_ADMINPASSWORD}@mongo/todo-js`;
+const dbU = `mongodb://mongo`;
+mongoose.connect(dbU, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', (err) => console.log(err));
 db.once('open', () => console.log('Connected to mongoDB'));
@@ -46,8 +50,8 @@ app.use((err, req, res, next) => {
 
 
 //Start-Server
-
-app.listen(port, (err) => {
+http.createServer(app).listen(port, (err) => {
 	if (err) throw err;
 	console.log(`server is alive on port ${port}`);
 });
+//https.createServer(options, app).listen(443)
