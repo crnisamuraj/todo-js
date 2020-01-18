@@ -1,5 +1,5 @@
 package-lock.json
-
+.mongo-volume/
 .env
 
 # Logs
